@@ -1,0 +1,52 @@
+#app {
+  .rightPanel {
+    a {
+      text-decoration: none;
+    }
+
+    .top {
+      .title {
+        text-transform: uppercase;
+      }
+    }
+
+    .tabs {
+      height: 25px;
+      border-bottom: 1px solid @panel-border-color;
+
+      .tab {
+        color: @text-color;
+        background-color: @panel-dark-bg;
+        display: inline-block;
+        text-align: center;
+        line-height: 22px;
+        height: 22px;
+        overflow: hidden;
+        width: 75px;
+        margin: 0;
+        cursor: pointer;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &.first {
+          margin: 0 0 0 @margin-medium-horizontal;
+        }
+
+        &.on {
+          border: 1px solid @panel-border-color;
+          border-bottom: 1px solid @panel-dark-bg;
+          color: @brand-secondary;
+          margin-bottom: -1px;
+          height: 25px;
+          line-height: 25px;
+        }
+
+        .btn-focus();
+      }
+    }
+
+    .tabsContent {
+      padding: @padding-medium;
+    }
+  }
+}

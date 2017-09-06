@@ -101,21 +101,16 @@
     },
     "helpDialogue": {
     },
-    "moreInfoRightPanel": {
+    "contentRightPanel": {
       "options": {
-        "canvasDisplayOrder": "",
-        "canvasExclude": "",
-        "copyToClipboardEnabled": false,
-        "manifestDisplayOrder": "",
-        "manifestExclude": "",
+        "defaultToPublicationEnabled": true,
         "panelAnimationDuration": 250,
         "panelCollapsedWidth": 30,
         "panelExpandedWidth": 255,
         "panelOpen": false,
-        "rtlLanguageCodes": "ar, ara, dv, div, he, heb, ur, urd",
-        "showAllLanguages": false,
-        "textLimit": 4,
-        "textLimitType": "lines"
+        "tabOrder": "",
+        "publicationEnabled": true,
+        "pageEnabled": true
       }
     },
     "multiSelectDialogue": {

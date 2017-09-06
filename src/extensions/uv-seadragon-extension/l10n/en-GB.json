@@ -105,22 +105,21 @@
         "zoomOut": "Zoom Out"
       }
     },
-    "moreInfoRightPanel": {
+    "contentRightPanel": {
       "content": {
+        "collapse": "Collapse More Information",
+        "expand": "Expand More Information",
+        "publication": "Publication",
+        "page": "Page",
+        "title": "More Information",
         "attribution": "Attribution",
-        "collapse": "Collapse Information",
-        "collapseFull": "Collapse Gallery",
         "description": "Description",
-        "expand": "Expand Information",
-        "expandFull": "Expand Gallery",
         "holdingText": "Your module goes here!",
         "less": "less",
         "license": "License",
         "logo": "Logo",
         "more": "more",
         "noData": "No data to display",
-        "page": "Page",
-        "title": "More Information",
         "manifestHeader": "About the item",
         "canvasHeader": "About the image",
         "copyToClipboard": "Copy to clipboard",

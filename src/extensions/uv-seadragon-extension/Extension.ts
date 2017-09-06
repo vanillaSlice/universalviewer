@@ -19,7 +19,7 @@ import {MetricType} from "../../modules/uv-shared-module/MetricType";
 import MobileFooterPanel = require("../../modules/uv-osdmobilefooterpanel-module/MobileFooter");
 import Mode = require("./Mode");
 import MoreInfoDialogue = require("../../modules/uv-dialogues-module/MoreInfoDialogue");
-import MoreInfoRightPanel = require("../../modules/uv-moreinforightpanel-module/MoreInfoRightPanel");
+import ContentRightPanel = require("../../modules/uv-contentrightpanel-module/ContentRightPanel");
 import MultiSelectDialogue = require("../../modules/uv-multiselectdialogue-module/MultiSelectDialogue");
 import MultiSelectionArgs = require("./MultiSelectionArgs");
 import PagingHeaderPanel = require("../../modules/uv-pagingheaderpanel-module/PagingHeaderPanel");
@@ -59,7 +59,7 @@ class Extension extends BaseExtension implements ISeadragonExtension {
     moreInfoDialogue: MoreInfoDialogue;
     multiSelectDialogue: MultiSelectDialogue;
     previousSearchResultRect: SearchResultRect;
-    rightPanel: MoreInfoRightPanel;
+    rightPanel: ContentRightPanel;
     searchResults: SearchResult[] = [];
     settingsDialogue: SettingsDialogue;
     shareDialogue: ShareDialogue;
@@ -361,7 +361,7 @@ class Extension extends BaseExtension implements ISeadragonExtension {
         this.centerPanel = new SeadragonCenterPanel(Shell.$centerPanel);
 
         if (this.isRightPanelEnabled()){
-            this.rightPanel = new MoreInfoRightPanel(Shell.$rightPanel);
+            this.rightPanel = new ContentRightPanel(Shell.$rightPanel);
         } else {
             Shell.$rightPanel.hide();
         }
