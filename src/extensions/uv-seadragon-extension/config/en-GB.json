@@ -103,14 +103,14 @@
     },
     "contentRightPanel": {
       "options": {
-        "defaultToPublicationEnabled": true,
+        "defaultToBibliographicEnabled": true,
         "panelAnimationDuration": 250,
         "panelCollapsedWidth": 30,
         "panelExpandedWidth": 255,
         "panelOpen": false,
         "tabOrder": "",
-        "publicationEnabled": true,
-        "pageEnabled": true
+        "bibliographicEnabled": true,
+        "textEnabled": true
       }
     },
     "multiSelectDialogue": {

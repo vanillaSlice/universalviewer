@@ -1,7 +1,7 @@
 import BaseCommands = require("../uv-shared-module/BaseCommands");
 import BaseView = require("../uv-shared-module/BaseView");
 
-class PublicationView extends BaseView {
+class BibliographicView extends BaseView {
 
   isOpen: boolean = false;
   component: IIIFComponents.IMetadataComponent;
@@ -82,4 +82,4 @@ class PublicationView extends BaseView {
 
 }
 
-export = PublicationView;
+export = BibliographicView;

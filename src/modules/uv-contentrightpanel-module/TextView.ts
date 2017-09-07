@@ -2,7 +2,7 @@ import BaseCommands = require("../uv-shared-module/BaseCommands");
 import BaseView = require("../uv-shared-module/BaseView");
 import ISeadragonExtension = require('../../extensions/uv-seadragon-extension/ISeadragonExtension');
 
-class PageView extends BaseView {
+class TextView extends BaseView {
 
   isOpen: boolean = false;
 
@@ -55,4 +55,4 @@ class PageView extends BaseView {
 
 }
 
-export = PageView;
+export = TextView;

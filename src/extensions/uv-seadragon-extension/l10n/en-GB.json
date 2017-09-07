@@ -109,8 +109,8 @@
       "content": {
         "collapse": "Collapse More Information",
         "expand": "Expand More Information",
-        "publication": "Publication",
-        "page": "Page",
+        "bibliographic": "Bibliographic",
+        "text": "Text",
         "title": "More Information",
         "attribution": "Attribution",
         "description": "Description",

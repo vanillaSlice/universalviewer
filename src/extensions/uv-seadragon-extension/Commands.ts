@@ -17,8 +17,8 @@ class Commands {
     static NEXT: string                                         = Commands.namespace + 'onNext';
     static NEXT_IMAGES_SEARCH_RESULT_UNAVAILABLE: string        = Commands.namespace + 'onNextImagesSearchResultUnavailable';
     static PREV_IMAGES_SEARCH_RESULT_UNAVAILABLE: string        = Commands.namespace + 'onPrevImagesSearchResultUnavailable';
-    static OPEN_PUBLICATION_VIEW: string                        = Commands.namespace + 'onOpenPublicationView';
-    static OPEN_PAGE_VIEW: string                               = Commands.namespace + 'onOpenPageView';
+    static OPEN_BIBLIOGRAPHIC_VIEW: string                      = Commands.namespace + 'onOpenBibliographicView';
+    static OPEN_TEXT_VIEW: string                               = Commands.namespace + 'onOpenTextView';
     static OPEN_THUMBS_VIEW: string                             = Commands.namespace + 'onOpenThumbsView';
     static OPEN_TREE_VIEW: string                               = Commands.namespace + 'onOpenTreeView';
     static PAGE_SEARCH: string                                  = Commands.namespace + 'onPageSearch';

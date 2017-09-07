@@ -1,22 +1,22 @@
 import BaseCommands = require("../uv-shared-module/BaseCommands");
 import Commands = require("../../extensions/uv-seadragon-extension/Commands");
 import RightPanel = require("../uv-shared-module/RightPanel");
-import PublicationView = require("./PublicationView");
-import PageView = require("./PageView");
+import BibliographicView = require("./BibliographicView");
+import TextView = require("./TextView");
 
 class ContentRightPanel extends RightPanel {
 
   $tabs: JQuery;
   $tabsContent: JQuery;
-  $publicationButton: JQuery;
-  $publicationView: JQuery;
-  $pageButton: JQuery;
-  $pageView: JQuery;
+  $bibliographicButton: JQuery;
+  $bibliographicView: JQuery;
+  $textButton: JQuery;
+  $textView: JQuery;
   $views: JQuery;
-  publicationView: PublicationView;
-  isPublicationViewOpen: boolean = false;
-  pageView: PageView;
-  isPageViewOpen: boolean = false;
+  bibliographicView: BibliographicView;
+  isBibliographicViewOpen: boolean = false;
+  textView: TextView;
+  isTextViewOpen: boolean = false;
 
   constructor($element: JQuery) {
     super($element);
@@ -34,13 +34,13 @@ class ContentRightPanel extends RightPanel {
     this.$tabs = $('<div class="tabs"></div>');
     this.$main.append(this.$tabs);
 
-    this.$publicationButton = $('<a class="publication tab" tabindex="0">' + this.content.publication + '</a>');
-    this.$publicationButton.prop('title', this.content.publication);
-    this.$tabs.append(this.$publicationButton);
+    this.$bibliographicButton = $('<a class="bibliographic tab" tabindex="0">' + this.content.bibliographic + '</a>');
+    this.$bibliographicButton.prop('title', this.content.bibliographic);
+    this.$tabs.append(this.$bibliographicButton);
 
-    this.$pageButton = $('<a class="page tab" tabindex="0">' + this.content.page + '</a>');
-    this.$pageButton.prop('title', this.content.page);
-    this.$tabs.append(this.$pageButton);
+    this.$textButton = $('<a class="text tab" tabindex="0">' + this.content.text + '</a>');
+    this.$textButton.prop('title', this.content.text);
+    this.$tabs.append(this.$textButton);
 
     this.$tabsContent = $('<div class="tabsContent"></div>');
     this.$main.append(this.$tabsContent);
@@ -48,55 +48,55 @@ class ContentRightPanel extends RightPanel {
     this.$views = $('<div class="views"></div>');
     this.$tabsContent.append(this.$views);
 
-    this.$publicationView = $('<div class="publicationView" tabindex="0"></div>');
-    this.$views.append(this.$publicationView);
+    this.$bibliographicView = $('<div class="bibliographicView" tabindex="0"></div>');
+    this.$views.append(this.$bibliographicView);
 
-    this.$pageView = $('<div class="pageView" tabindex="0"></div>');
-    this.$views.append(this.$pageView);
+    this.$textView = $('<div class="textView" tabindex="0"></div>');
+    this.$views.append(this.$textView);
 
-    this.$publicationButton.onPressed(() => {
-      this.openPublicationView();
-      $.publish(Commands.OPEN_PUBLICATION_VIEW);
+    this.$bibliographicButton.onPressed(() => {
+      this.openBibliographicView();
+      $.publish(Commands.OPEN_BIBLIOGRAPHIC_VIEW);
     });
 
-    this.$pageButton.onPressed(() => {
-        this.openPageView();
-        $.publish(Commands.OPEN_PAGE_VIEW);
+    this.$textButton.onPressed(() => {
+        this.openTextView();
+        $.publish(Commands.OPEN_TEXT_VIEW);
     });
 
     this.setTitle(this.content.title);
   }
 
-  createPublicationView(): void {
-    this.publicationView = new PublicationView(this.$publicationView);
+  createBibliographicView(): void {
+    this.bibliographicView = new BibliographicView(this.$bibliographicView);
   }
 
-  createPageView(): void {
-    this.pageView = new PageView(this.$pageView);
+  createTextView(): void {
+    this.textView = new TextView(this.$textView);
   }
 
   toggleFinish(): void {
     super.toggleFinish();
 
     if (this.isUnopened) {
-      var publicationEnabled: boolean = Utils.Bools.getBool(this.config.options.publicationEnabled, true);
-      var pageEnabled: boolean = Utils.Bools.getBool(this.config.options.pageEnabled, true);
+      var bibliographicEnabled: boolean = Utils.Bools.getBool(this.config.options.bibliographicEnabled, true);
+      var textEnabled: boolean = Utils.Bools.getBool(this.config.options.textEnabled, true);
       
-      // hide the tabs if either publication or page are disabled
-      if (!publicationEnabled || !pageEnabled) { 
+      // hide the tabs if either bibliographic or text are disabled
+      if (!bibliographicEnabled || !textEnabled) { 
         this.$tabs.hide();
       }
       
-      if (publicationEnabled && this.defaultToPublicationView()) {
-        this.openPublicationView();
-      } else if (pageEnabled){
-        this.openPageView();
+      if (bibliographicEnabled && this.defaultToBibliographicView()) {
+        this.openBibliographicView();
+      } else if (textEnabled){
+        this.openTextView();
       }
     }
   }
 
-  defaultToPublicationView(): boolean {
-    return Utils.Bools.getBool(this.config.options.defaultToPublicationEnabled, false);
+  defaultToBibliographicView(): boolean {
+    return Utils.Bools.getBool(this.config.options.defaultToBibliographicEnabled, false);
   }
 
   expandFullStart(): void {
@@ -107,10 +107,10 @@ class ContentRightPanel extends RightPanel {
   expandFullFinish(): void {
     super.expandFullFinish();
 
-    if (this.$publicationButton.hasClass('on')) {
-        this.openPublicationView();
-    } else if (this.$pageButton.hasClass('on')) {
-        this.openPageView();
+    if (this.$bibliographicButton.hasClass('on')) {
+        this.openBibliographicView();
+    } else if (this.$textButton.hasClass('on')) {
+        this.openTextView();
     }
 
     $.publish(BaseCommands.RIGHTPANEL_EXPAND_FULL_FINISH);
@@ -126,46 +126,46 @@ class ContentRightPanel extends RightPanel {
     $.publish(BaseCommands.RIGHTPANEL_COLLAPSE_FULL_FINISH);
   }
 
-  openPublicationView(): void {
-    this.isPublicationViewOpen = true;
-    this.isPageViewOpen = false;
+  openBibliographicView(): void {
+    this.isBibliographicViewOpen = true;
+    this.isTextViewOpen = false;
 
-    if (!this.publicationView) {
-      this.createPublicationView();
+    if (!this.bibliographicView) {
+      this.createBibliographicView();
     }
 
-    this.$publicationButton.addClass('on');
-    this.$pageButton.removeClass('on');
+    this.$bibliographicButton.addClass('on');
+    this.$textButton.removeClass('on');
 
-    this.publicationView.show();
+    this.bibliographicView.show();
 
-    if (this.pageView) { 
-      this.pageView.hide();
+    if (this.textView) { 
+      this.textView.hide();
     }
 
     this.resize();
-    this.publicationView.resize();
+    this.bibliographicView.resize();
   }
 
-  openPageView(): void {
-    this.isPageViewOpen = true;
-    this.isPublicationViewOpen = false;
+  openTextView(): void {
+    this.isTextViewOpen = true;
+    this.isBibliographicViewOpen = false;
 
-    if (!this.pageView) {
-      this.createPageView();
+    if (!this.textView) {
+      this.createTextView();
     }
 
-    this.$pageButton.addClass('on');
-    this.$publicationButton.removeClass('on');
+    this.$textButton.addClass('on');
+    this.$bibliographicButton.removeClass('on');
 
-    this.pageView.show();
+    this.textView.show();
 
-    if (this.publicationView) {
-      this.publicationView.hide();
+    if (this.bibliographicView) {
+      this.bibliographicView.hide();
     }
 
     this.resize();
-    this.pageView.resize();
+    this.textView.resize();
   }
 
   resize(): void {
